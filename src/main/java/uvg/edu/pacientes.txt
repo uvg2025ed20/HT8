@@ -1,0 +1,7 @@
+Juan Perez, fractura de pierna, C
+Maria Ramirez, apendicitis, A
+Lorenzo Toledo, chikunguya, E
+Carmen Sarmientos, dolores de parto, B
+Carlos Lopez, gripe, D
+Ana Molina, quemadura grave, A
+Roberto Jimenez, corte profundo, C
