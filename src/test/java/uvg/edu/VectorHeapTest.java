@@ -8,7 +8,6 @@ class VectorHeapTest {
 
     private VectorHeap<Paciente> heap;
 
-    // Helper method to create patients easily
     private Paciente createPaciente(String name, char code) {
         return new Paciente(name, "Symptom " + code, code);
     }
@@ -32,12 +31,12 @@ class VectorHeapTest {
         assertEquals(pC, heap.getFirst(), "First element should be C after adding C.");
         assertEquals(1, heap.size());
 
-        heap.add(pA); // Higher priority
+        heap.add(pA);
         assertEquals(pA, heap.getFirst(), "First element should be A after adding A.");
         assertEquals(2, heap.size());
 
 
-        heap.add(pB); // Medium priority
+        heap.add(pB);
         assertEquals(pA, heap.getFirst(), "First element should still be A after adding B.");
         assertEquals(3, heap.size());
         assertFalse(heap.isEmpty());
@@ -49,7 +48,7 @@ class VectorHeapTest {
         Paciente pA1 = createPaciente("Patient A1", 'A');
         Paciente pB = createPaciente("Patient B", 'B');
         Paciente pE = createPaciente("Patient E", 'E');
-        Paciente pA2 = createPaciente("Patient A2", 'A'); // Same priority as A1
+        Paciente pA2 = createPaciente("Patient A2", 'A');
 
         heap.add(pC);
         heap.add(pA1);
@@ -59,7 +58,6 @@ class VectorHeapTest {
 
         assertEquals(5, heap.size());
 
-        // Removing elements should yield them in priority order (A, A, B, C, E)
         Paciente removed1 = heap.remove();
         assertTrue(removed1 == pA1 || removed1 == pA2, "First removed should be an A patient.");
         assertEquals(4, heap.size());

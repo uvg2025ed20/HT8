@@ -9,10 +9,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Boolean menu = true;
+        boolean menu = true;
 
         while (menu) {
-            System.out.println("Seleccione el sistema de emergencia que quiere usar:");
+            System.out.println("\n\nSeleccione el sistema de emergencia que quiere usar:");
             System.out.println("1. VectorHeap");
             System.out.println("2. PriorityQueue");
             System.out.println("3. Salir");
@@ -21,13 +21,13 @@ public class Main {
             int opcion = scanner.nextInt();
 
             if (opcion == 1) {
-                System.out.println("Sistema de Emergencia con VectorHeap");
+                System.out.println("\nSistema de Emergencia con VectorHeap");
                 PriorityQueue<Paciente> colaEmergenciaVH = new VectorHeap<>();
                 cargarPacientes("src/main/java/uvg/edu/pacientes.txt", colaEmergenciaVH);
                 atenderPacientes(colaEmergenciaVH);
             }
             else if (opcion == 2) {
-                System.out.println("Sistema de Emergencia PriorityQueue");
+                System.out.println("\nSistema de Emergencia PriorityQueue");
                 java.util.PriorityQueue<Paciente> colaEmergenciaJCF = new java.util.PriorityQueue<>();
                 cargarPacientesJCF("src/main/java/uvg/edu/pacientes.txt", colaEmergenciaJCF);
                 atenderPacientesJCF(colaEmergenciaJCF);
@@ -41,7 +41,6 @@ public class Main {
     public static void cargarPacientes(String filename, PriorityQueue<Paciente> cola) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String linea;
-            System.out.println("Cargando pacientes desde " + filename + " para VectorHeap...");
             while ((linea = reader.readLine()) != null) {
                 linea = linea.trim();
                 if (linea.isEmpty()) continue;
@@ -54,17 +53,17 @@ public class Main {
                     if (codigo >= 'A' && codigo <= 'E') {
                         Paciente p = new Paciente(nombre, sintoma, codigo);
                         cola.add(p);
-                        System.out.println("  Ingresado (VH): " + p);
+                        System.out.println(p);
                     } else {
-                        System.err.println("  Error (VH): Código de emergencia inválido en línea: " + linea);
+                        System.err.println("Código de emergencia inválido en línea: " + linea);
                     }
                 } else {
-                    System.err.println("  Error (VH): Formato incorrecto en línea: " + linea);
+                    System.err.println("Formato incorrecto en línea: " + linea);
                 }
             }
-            System.out.println("Carga (VH) completada. Pacientes en cola: " + cola.size());
+            System.out.println("Pacientes en cola: " + cola.size());
         } catch (IOException e) {
-            System.err.println("Error al leer el archivo (VH) " + filename + ": " + e.getMessage());
+            System.err.println("Error al leer el archivo " + filename + ": " + e.getMessage());
         } catch (Exception e) {
             System.err.println("Error inesperado al procesar archivo (VH): " + e.getMessage());
             e.printStackTrace();
@@ -87,19 +86,19 @@ public class Main {
                     if (codigo >= 'A' && codigo <= 'E') {
                         Paciente p = new Paciente(nombre, sintoma, codigo);
                         cola.add(p);
-                        System.out.println("  Ingresado (JCF): " + p);
+                        System.out.println(p);
                     } else {
-                        System.err.println("  Error (JCF): Código de emergencia inválido en línea: " + linea);
+                        System.err.println("Código de emergencia inválido en línea: " + linea);
                     }
                 } else {
-                    System.err.println("  Error (JCF): Formato incorrecto en línea: " + linea);
+                    System.err.println("Formato incorrecto en línea: " + linea);
                 }
             }
-            System.out.println("Carga (JCF) completada. Pacientes en cola: " + cola.size());
+            System.out.println("Pacientes en cola: " + cola.size());
         } catch (IOException e) {
-            System.err.println("Error al leer el archivo (JCF) " + filename + ": " + e.getMessage());
+            System.err.println("Error al leer el archivo " + filename + ": " + e.getMessage());
         } catch (Exception e) {
-            System.err.println("Error inesperado al procesar archivo (JCF): " + e.getMessage());
+            System.err.println("Error inesperado al procesar archivo: " + e.getMessage());
             e.printStackTrace();
         }
     }
